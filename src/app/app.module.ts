@@ -42,6 +42,7 @@ import { BPGraphComponent } from './bpgraph/bpgraph.component';
 import { DiagnosisDialogComponent } from './diagnosis-dialog/diagnosis-dialog.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ConsolidatedGoalsComponent } from './consolidated-goals/consolidated-goals.component';
+import { LaunchComponent } from './launch/launch.component';
 
 const routes: Routes = []; // sets up routes constant where you define your routes
 
@@ -75,6 +76,7 @@ const routes: Routes = []; // sets up routes constant where you define your rout
     BPGraphComponent,
     DiagnosisDialogComponent,
     ConsolidatedGoalsComponent,
+    LaunchComponent,
   ],
     imports: [
         FlexLayoutModule,
