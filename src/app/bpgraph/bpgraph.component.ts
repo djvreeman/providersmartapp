@@ -95,7 +95,7 @@ export class BPGraphComponent implements OnInit {
           //   quarter: 'll',
           //   year: 'll'
           // },
-          //tooltipFormat: 'll MMM D'
+          // tooltipFormat: 'll MMM D'
         }
       }
     }
