@@ -146,10 +146,8 @@ export function getLineChartOptionsObject(suggestedMinDate: Date, suggestedMaxDa
           type: 'time',
           distribution: 'linear',
           ticks: {
-            // suggestedMin: suggestedMinDate,
-            // suggestedMax: suggestedMaxDate,
-            min: suggestedMinDate,
-            max: suggestedMaxDate,
+            suggestedMin: suggestedMinDate,
+            suggestedMax: suggestedMaxDate,
             maxTicksLimit: 7
           },
           time: {
