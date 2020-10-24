@@ -1,6 +1,7 @@
 import {GoalTarget} from './app/generated-data-api';
 import {Label} from 'ng2-charts';
 
+
 export function formatGoalTargetValue(target: GoalTarget, mostRecentResultValue: string): any[] {
   let formatted = 'Unknown Type: ';
   let highlighted = false;
@@ -130,7 +131,7 @@ export function reformatYYYYMMDD(dt): string {
   }
 }
 
-export function getLineChartOptionsObject(suggestedMinDate: Date, suggestedMaxDate: Date): {} {
+export function getLineChartOptionsObject(min: number, max: number, suggestedMinDate: Date, suggestedMaxDate: Date): {} {
   const opts =
     {
       responsive: false,
@@ -138,8 +139,8 @@ export function getLineChartOptionsObject(suggestedMinDate: Date, suggestedMaxDa
       scales: {
         yAxes: [{
           ticks: {
-            suggestedMax: 180,
-            suggestedMin: 50
+            suggestedMax: max,
+            suggestedMin: min
           }
         }],
         xAxes: [{
@@ -184,4 +185,14 @@ export function getLineChartOptionsObject(suggestedMinDate: Date, suggestedMaxDa
    */
 
   return opts;
+}
+
+export function formatEgfrResult(egfr: number, unit: string): string {
+  let ret = '';
+  if (egfr && unit) {
+    ret = egfr.toString() + ' '
+      + unit.substring(0, unit.length - 1)
+      + '<sup>' + unit.substring(unit.length - 1) + '</sup>';
+  }
+  return ret;
 }
