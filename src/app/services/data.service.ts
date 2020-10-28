@@ -50,9 +50,10 @@ import {
   emptyEgfrTableData,
   emptyEgfrData
 } from '../datamodel/egfr';
-import {formatEgfrResult, getLineChartOptionsObject, reformatYYYYMMDD} from '../../utility-functions';
+import {formatEgfrResult, getEgrLineChartAnnotationsObject, getLineChartOptionsObject, reformatYYYYMMDD} from '../../utility-functions';
 import {patchTsGetExpandoInitializer} from '@angular/compiler-cli/ngcc/src/packages/patch_ts_expando_initializer';
 import {ChartDataSets, ChartPoint} from 'chart.js';
+
 import * as moment from 'moment';
 
 @Injectable({
@@ -346,7 +347,6 @@ export class DataService {
     this.egfr = emptyEgfr;
     this.egfr.tableData = [];
     this.egfr.chartData = [];
-
     this.goalsdataservice.getPatientEgfr(patientId)
       .pipe(
         finalize(() => {
@@ -364,9 +364,10 @@ export class DataService {
           const minDate = new Date(moment(vsLowDateRow.date.toString()).startOf('month').format('MMMM DD YYYY H:mm A'));
           this.egfr.suggestedMin = minDate;
           const maxDate = new Date(moment(vsHighDateRow.date.toString()).add(1, 'M').startOf('month').format('YYYY-MM-DD hh:mm:ss'));
-          console.log(`getPatientEgfrInfo (finalize) patientId: ${patientId}  minDate ${minDate.toString()} : maxDate ${maxDate.toString()} `);
           this.egfr.suggestedMax = maxDate;
-          this.egfr.lineChartOptions = getLineChartOptionsObject(10, 70, this.egfr.suggestedMin, this.egfr.suggestedMax);
+          const lineChartOptions = getLineChartOptionsObject(10, 70, this.egfr.suggestedMin, this.egfr.suggestedMax);
+          const lineChartAnnotations = getEgrLineChartAnnotationsObject();
+          this.egfr.lineChartOptions =  {...lineChartOptions, annotation: lineChartAnnotations};
           this.egfr.xAxisLabels = [];
           let yr = '';
           let prevYr = '';
@@ -384,7 +385,6 @@ export class DataService {
             );
           });
           this.egfr.xAxisLabels = xAxisLabels;
-          console.log(`getPatientEgfrInfo (finalize) patientId: ${patientId}  this.egfr: `, this.egfr);
         })
       )
       .subscribe(res => {

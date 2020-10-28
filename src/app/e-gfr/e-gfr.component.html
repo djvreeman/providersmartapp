@@ -44,7 +44,7 @@
 <!--          <td>64 mL/min/1.73m<sup>2</sup></td>-->
 <!--        </tr>-->
 <!--       </table>-->
-      <table mat-table [dataSource]="egfrDataSource" width="100%">
+      <table mat-table matSort [dataSource]="egfrDataSource" width="100%">
         <ng-container matColumnDef="date">
           <th mat-header-cell *matHeaderCellDef>Date</th>
           <td mat-cell *matCellDef="let egfr"> {{egfr.date | date: 'MM/dd/yyyy'}} </td>

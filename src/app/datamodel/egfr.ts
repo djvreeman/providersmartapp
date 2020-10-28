@@ -1,4 +1,5 @@
 import {ChartData, ChartDataSets, ChartOptions, ChartPoint} from 'chart.js';
+import * as pluginAnnotations from 'chartjs-plugin-annotation';
 import {Label} from 'ng2-charts';
 import {getLineChartOptionsObject} from '../../utility-functions';
 
@@ -35,7 +36,7 @@ interface Egfr {
   xAxisLabels?: Array<Label>;
   suggestedMin?: Date;
   suggestedMax?: Date;
-  lineChartOptions?: ChartOptions;
+  lineChartOptions?: ChartOptions & { annotation: any };
 }
 
 const emptyEgfrData: ChartPoint = {};
@@ -54,7 +55,7 @@ const emptyEgfr: Egfr = {
   xAxisLabels: ['Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
   suggestedMin: new Date('2020-01-01'),
   suggestedMax: new Date('2020-06-30'),
-  lineChartOptions: getLineChartOptionsObject(10, 70, new Date('2020-01-01'),  new Date('2020-06-30'))
+  lineChartOptions: {...getLineChartOptionsObject(10, 70, new Date('2020-01-01'),  new Date('2020-06-30')), annotation: []}
 };
 
 export {
