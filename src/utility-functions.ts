@@ -172,7 +172,6 @@ export function getLineChartOptionsObject(min: number, max: number, suggestedMin
     };
 
   /*
-
             millisecond: 'MMM DD',
             second: 'MMM DD',
             minute: 'MMM DD',
@@ -188,44 +187,44 @@ export function getLineChartOptionsObject(min: number, max: number, suggestedMin
 }
 
 export function getEgrLineChartAnnotationsObject() {
-      const annotations = {
-      annotations: [
-        {
-          drawTime: 'beforeDatasetsDraw',
-          type: 'box',
-          id: 'egfr-critical',
-          xScaleID: 'x-axis-0',
-          yScaleID: 'y-axis-0',
-          borderWidth: 0,
-          yMin: 0,
-          yMax: 15,
-          backgroundColor: 'rgba(227, 127, 104,0.3)'
-        },
-        {
-          drawTime: 'beforeDatasetsDraw',
-          type: 'box',
-          id: 'egfr-warning',
-          xScaleID: 'x-axis-0',
-          yScaleID: 'y-axis-0',
-          borderWidth: 0,
-          yMin: 15,
-          yMax: 60,
-          backgroundColor: 'rgba(247, 245, 116,0.3)'
-        },
-        {
-          drawTime: 'beforeDatasetsDraw',
-          type: 'box',
-          id: 'egfr-ok',
-          xScaleID: 'x-axis-0',
-          yScaleID: 'y-axis-0',
-          borderWidth: 0,
-          yMin: 60,
-          yMax: 100,
-          backgroundColor: 'rgba(128, 204, 113,0.3)'
-        }
-      ]
-    };
-      return annotations;
+  const annotations = {
+    annotations: [
+      {
+        drawTime: 'beforeDatasetsDraw',
+        type: 'box',
+        id: 'egfr-critical',
+        xScaleID: 'x-axis-0',
+        yScaleID: 'y-axis-0',
+        borderWidth: 0,
+        yMin: 0,
+        yMax: 15,
+        backgroundColor: 'rgba(227, 127, 104,0.3)'
+      },
+      {
+        drawTime: 'beforeDatasetsDraw',
+        type: 'box',
+        id: 'egfr-warning',
+        xScaleID: 'x-axis-0',
+        yScaleID: 'y-axis-0',
+        borderWidth: 0,
+        yMin: 15,
+        yMax: 60,
+        backgroundColor: 'rgba(247, 245, 116,0.3)'
+      },
+      {
+        drawTime: 'beforeDatasetsDraw',
+        type: 'box',
+        id: 'egfr-ok',
+        xScaleID: 'x-axis-0',
+        yScaleID: 'y-axis-0',
+        borderWidth: 0,
+        yMin: 60,
+        yMax: 100,
+        backgroundColor: 'rgba(128, 204, 113,0.3)'
+      }
+    ]
+  };
+  return annotations;
 }
 
 export function formatEgfrResult(egfr: number, unit: string): string {

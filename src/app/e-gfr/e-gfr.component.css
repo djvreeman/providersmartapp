@@ -3,18 +3,6 @@ chart-wrapper {
   width: 200px;
 }
 
-.resultBorderline{
-  background-color: lightgoldenrodyellow;
-}
-
-.resultGood{
-  background-color: palegreen;
-}
-
-.resultCritical{
-  background-color: lightpink;
-}
-
 mat-table {
   vertical-align: top;
   overflow: auto;
@@ -36,20 +24,14 @@ tr.mat-row {
   height: 24px !important;
 }
 
-tr.mat-row.good {
-  min-height: 24px;
-  height: 24px !important;
-  background-color: lightgreen;
+tr.mat-row.resultBorderline{
+  background-color: lightgoldenrodyellow;
 }
 
-tr.mat-row.outofrange {
-  min-height: 24px;
-  height: 24px !important;
-  background-color: lightyellow;
+tr.mat-row.resultGood{
+  background-color: palegreen;
 }
 
-tr.mat-row.critical {
-  min-height: 24px;
-  height: 24px !important;
-  background-color: red;
+tr.mat-row.resultCritical{
+  background-color: lightpink;
 }

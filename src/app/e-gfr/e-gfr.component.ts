@@ -1,12 +1,12 @@
 import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
-import {ChartDataSets, ChartOptions} from 'chart.js';
-import {Color, BaseChartDirective, Label} from 'ng2-charts';
+import {Color} from 'ng2-charts';
 import * as pluginAnnotations from 'chartjs-plugin-annotation';
 import {DataService} from '../services/data.service';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort, Sort} from '@angular/material/sort';
 import {EgfrTableData} from '../datamodel/egfr';
 import {formatEgfrResult, reformatYYYYMMDD} from '../../utility-functions';
+import {MatTableDataSource} from '@angular/material/table';
 
 @Component({
   selector: 'app-e-gfr',
@@ -15,7 +15,7 @@ import {formatEgfrResult, reformatYYYYMMDD} from '../../utility-functions';
 })
 export class EGFRComponent implements OnInit, AfterViewInit {
 
-  egfrDataSource = this.dataservice.egfrDataSource;   // todo:  Sort egfrDataSource in reverse order.
+  egfrDataSource: MatTableDataSource<EgfrTableData> = this.dataservice.egfrDataSource;
   egfrRowMax = 7;
 
   lineChartColors: Color[] = [
@@ -34,7 +34,6 @@ export class EGFRComponent implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-
   ngOnInit(): void {
 
   }
@@ -46,6 +45,7 @@ export class EGFRComponent implements OnInit, AfterViewInit {
     }
     this.egfrDataSource.sort = this.sort;
     this.egfrDataSource.sortingDataAccessor = (data: EgfrTableData, header: string) => {
+      console.log('in egfrDataSource.sortingDataAccessor: data: ', data);
       switch (header) {
         case ('result'): {
           return data.egfr;
@@ -71,6 +71,28 @@ export class EGFRComponent implements OnInit, AfterViewInit {
   EgfrResult(egfr: EgfrTableData): string {
     return formatEgfrResult(egfr.egfr, egfr.unit);
   }
+
+  getEgfrRowCssClass(egfr: EgfrTableData): string {
+    let cssClass = '';
+    const val = egfr.egfr;
+    if (val) {
+      switch (true) {
+        case (val >= 40):
+          cssClass = 'resultGood';
+          break;
+        case (val < 40 && val >= 35):
+          cssClass = 'resultBorderline';
+          break;
+        case (val < 35):
+          cssClass = 'resultCritical';
+          break;
+        default:
+          break;
+      }
+    }
+    return cssClass;
+  }
+
 
 
 }
