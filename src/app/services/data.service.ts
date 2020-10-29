@@ -53,7 +53,6 @@ import {
 import {formatEgfrResult, getEgrLineChartAnnotationsObject, getLineChartOptionsObject, reformatYYYYMMDD} from '../../utility-functions';
 import {patchTsGetExpandoInitializer} from '@angular/compiler-cli/ngcc/src/packages/patch_ts_expando_initializer';
 import {ChartDataSets, ChartPoint} from 'chart.js';
-
 import * as moment from 'moment';
 
 @Injectable({
