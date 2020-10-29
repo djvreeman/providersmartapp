@@ -45,7 +45,6 @@ export class EGFRComponent implements OnInit, AfterViewInit {
     }
     this.egfrDataSource.sort = this.sort;
     this.egfrDataSource.sortingDataAccessor = (data: EgfrTableData, header: string) => {
-      console.log('in egfrDataSource.sortingDataAccessor: data: ', data);
       switch (header) {
         case ('result'): {
           return data.egfr;
@@ -77,13 +76,13 @@ export class EGFRComponent implements OnInit, AfterViewInit {
     const val = egfr.egfr;
     if (val) {
       switch (true) {
-        case (val >= 40):
-          cssClass = 'resultGood';
-          break;
-        case (val < 40 && val >= 35):
+        case (val >= 60):
           cssClass = 'resultBorderline';
           break;
-        case (val < 35):
+        case (val < 60 && val >= 15):
+          cssClass = 'resultGood';
+          break;
+        case (val < 15):
           cssClass = 'resultCritical';
           break;
         default:
