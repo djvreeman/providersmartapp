@@ -4,8 +4,8 @@ import * as pluginAnnotations from 'chartjs-plugin-annotation';
 import {DataService} from '../services/data.service';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort, Sort} from '@angular/material/sort';
-import {EgfrTableData} from '../datamodel/egfr';
-import {formatEgfrResult, reformatYYYYMMDD} from '../../utility-functions';
+import {UacrTableData} from '../datamodel/uacr';
+import {formatUacrResult, reformatYYYYMMDD} from '../../utility-functions';
 import {MatTableDataSource} from '@angular/material/table';
 
 @Component({
@@ -15,7 +15,7 @@ import {MatTableDataSource} from '@angular/material/table';
 })
 export class UACRComponent implements OnInit, AfterViewInit {
 
-  uacrDataSource: MatTableDataSource<EgfrTableData> = this.dataservice.egfrDataSource;
+  uacrDataSource: MatTableDataSource<UacrTableData> = this.dataservice.uacrDataSource;
   uacrRowMax = 7;
 
   public lineChartColors: Color[] = [
@@ -46,16 +46,13 @@ export class UACRComponent implements OnInit, AfterViewInit {
     }
     this.uacrDataSource.sort = this.sort;
     this.uacrDataSource.sortingDataAccessor = (data: UacrTableData, header: string) => {
-      console.log('in ucrDataSource.sortingDataAccessor: data: ', data);
       switch (header) {
         case ('result'): {
           return data.uacr;
-          break;
         }
 
         case ('date' ): {
           return reformatYYYYMMDD(data.date);
-          break;
         }
 
         default: {
@@ -93,6 +90,7 @@ export class UACRComponent implements OnInit, AfterViewInit {
     }
     return cssClass;
   }
+
 
 
 }

@@ -159,7 +159,7 @@ export function getLineChartOptionsObject(min: number, max: number, suggestedMin
               second: 'D MMM, h:mm a',
               minute: 'D MMM, h:mm a',
               hour: 'D MMM, h:mm a',
-              day: 'D MMM, h:mm a',
+              day: 'D MMM',
               week: 'll',
               month: 'MMM',
               quarter: 'll',
@@ -273,6 +273,14 @@ export function formatEgfrResult(egfr: number, unit: string): string {
     ret = egfr.toString() + ' '
       + unit.substring(0, unit.length - 1)
       + '<sup>' + unit.substring(unit.length - 1) + '</sup>';
+  }
+  return ret;
+}
+
+export function formatUacrResult(uacr: number, unit: string): string {
+  let ret = '';
+  if (uacr && unit) {
+    ret = uacr.toString() + ' ' + unit;
   }
   return ret;
 }
