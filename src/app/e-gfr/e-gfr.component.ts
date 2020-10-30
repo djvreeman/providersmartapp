@@ -48,12 +48,10 @@ export class EGFRComponent implements OnInit, AfterViewInit {
       switch (header) {
         case ('result'): {
           return data.egfr;
-          break;
         }
 
         case ('date' ): {
           return reformatYYYYMMDD(data.date);
-          break;
         }
 
         default: {
