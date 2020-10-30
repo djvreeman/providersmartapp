@@ -101,16 +101,17 @@ export class DataService {
   careplans: MccCarePlan[];
   socialConcerns: SocialConcerns[];
   conditions: ConditionLists;
-  targetValues: TargetValue[];
-  activeMedications: MedicationSummary[];
+  targetValues: TargetValue[] = [];
+  activeMedications: MedicationSummary[] = [];
   inactiveMedications: MedicationSummary[];
-  allGoals: GoalSummary[];
+  allGoals: GoalSummary[] = [];
   vitalSigns: VitalSigns = emptyVitalSigns;
   egfr: Egfr = emptyEgfr;
   uacr: Uacr = emptyUacr;
   wot: Wot = emptyWot;
 
   goals: GoalLists;
+
 
   targetValuesDataSource = new MatTableDataSource(this.targetValues);
   vitalSignsDataSource = new MatTableDataSource(this.vitalSigns.tableData);
