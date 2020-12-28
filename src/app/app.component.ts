@@ -77,7 +77,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   filteredPatients: Observable<any[]>;
   selectedPatientId = '';
   showPatientSearch = false;
-  smartLaunch = false;
+  smartLaunch = true;
   refreshedForced = false;
   minSearchCharacters = 3;
   devmode = false;
